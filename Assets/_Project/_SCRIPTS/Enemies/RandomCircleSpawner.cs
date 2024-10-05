@@ -28,13 +28,31 @@ namespace Gameplay
         {
             _timer = 0;
 
+            if (WavesManager.Instance.RemainingEnemiesToSpawn == 0)
+                return;
+
             float randAngle = UnityEngine.Random.Range(_spawnMinAngleShift, _spawnMaxAngleShift);
             var spawnPos = Quaternion.AngleAxis(randAngle, Vector3.back) * _prevSpawnPosition;
-
-            if (UnityEngine.Random.Range(0, 2) == 0)
-                EnemyManager.Instance.SpawnEnemy<FollowPlayerEnemy>(spawnPos);
-            else
-                EnemyManager.Instance.SpawnEnemy<PriorityCellEnemy>(spawnPos);
+            
+            bool spawned = false;
+            while (!spawned)
+                switch(UnityEngine.Random.Range(0, 2))
+                {
+                    case 0:
+                        if (WavesManager.Instance.FollowersToSpawn > 0)
+                        {
+                            EnemyManager.Instance.SpawnEnemy<FollowPlayerEnemy>(spawnPos);
+                            spawned = true;
+                        }
+                        break;
+                    case 1:
+                        if (WavesManager.Instance.CellFocusersToSpawn > 0)
+                        {
+                            EnemyManager.Instance.SpawnEnemy<PriorityCellEnemy>(spawnPos);
+                            spawned = true;
+                        }
+                        break;
+                }
 
             _prevSpawnPosition = spawnPos;
         }

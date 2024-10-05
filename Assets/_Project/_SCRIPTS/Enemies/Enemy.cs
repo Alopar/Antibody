@@ -61,7 +61,7 @@ namespace Gameplay
 
         protected void RandomiseMark()
         {
-            _markType = (MarkType)UnityEngine.Random.Range(0, 3);
+            _markType = (MarkType)UnityEngine.Random.Range(0, WavesManager.Instance.CurrentWave.AllowedMarks);
         }
 
         protected abstract IEnumerator ChangingMark();

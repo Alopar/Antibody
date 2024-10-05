@@ -31,9 +31,15 @@ namespace Gameplay
             Enemy enemyToSpawn = null;
 
             if (typeof(T) == _followPlayerEnemyPrefab.GetType())
+            {
                 enemyToSpawn = _followPlayerEnemyPrefab;
+                WavesManager.Instance.DecreaseFollowersToSpawn();
+            }
             else if (typeof(T) == _priorityCellEnemyPrefab.GetType())
+            {
                 enemyToSpawn = _priorityCellEnemyPrefab;
+                WavesManager.Instance.DecreaseCellFocusersToSpawn();
+            }
             else
                 Debug.LogError($"Enemy of type {typeof(T)} not found");
 
