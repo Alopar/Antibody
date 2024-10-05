@@ -783,8 +783,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: FollowerEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8780302304735849757, guid: c882601510cf767488b5c5915b48fd07, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
