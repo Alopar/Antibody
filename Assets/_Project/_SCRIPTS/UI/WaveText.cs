@@ -13,7 +13,7 @@ namespace Gameplay
         {
             if (!_initialized)
             {
-                _text.text = "Wave:" + WavesManager.Instance.CurrentWave.ToString();
+                _text.text = "Wave: " + WavesManager.Instance.CurrentWaveIndex;
                 WavesManager.Instance.WaveNumberIncreased += OnNewWave;
                 _initialized = true;
             }
@@ -23,7 +23,7 @@ namespace Gameplay
         {
             if (WavesManager.Instance == null)
                 return;
-            _text.text = "Wave:" + WavesManager.Instance.CurrentWave.ToString();
+            _text.text = "Wave: " + WavesManager.Instance.CurrentWaveIndex;
             WavesManager.Instance.WaveNumberIncreased += OnNewWave;
             _initialized = true;
         }
@@ -35,7 +35,7 @@ namespace Gameplay
 
         private void OnNewWave()
         {
-            _text.text = "Wave:" + WavesManager.Instance.CurrentWave.ToString();
+            _text.text = "Wave: " + WavesManager.Instance.CurrentWaveIndex;
         }
     }
 }
