@@ -9,11 +9,25 @@ namespace Gameplay
         [SerializeField] private float _spawnMinAngleShift;
 
         private float _timer;
+        private float _spawnCooldown;
         private Vector3 _prevSpawnPosition;
 
         private void Awake()
         {
             _prevSpawnPosition = UnityEngine.Random.insideUnitCircle.normalized * _spawnRadius; 
+        }
+
+        private void Start()
+        {
+            float spawnTimeSpread = WavesManager.Instance.CurrentWave.SpawnCooldown * 0.85f;
+            _spawnCooldown = WavesManager.Instance.CurrentWave.SpawnCooldown + Random.Range(-spawnTimeSpread, spawnTimeSpread);
+            WavesManager.Instance.WaveNumberIncreased += OnNextWave;
+        }
+
+        private void OnNextWave()
+        {
+            float spawnTimeSpread = WavesManager.Instance.CurrentWave.SpawnCooldown * 0.85f;
+            _spawnCooldown = WavesManager.Instance.CurrentWave.SpawnCooldown + Random.Range(-spawnTimeSpread, spawnTimeSpread);
         }
 
         private void Update()
