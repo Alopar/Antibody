@@ -20,8 +20,11 @@ namespace Gameplay
         protected float _timer;
         protected bool _isMarked;
 
+        public MarkType MarkType => _markType;
         public bool IsChangingMark => _markType == MarkType.None;
         public bool IsMarked => _isMarked;
+
+        public event Action Died;
 
         protected virtual void Awake()
         {
@@ -42,7 +45,7 @@ namespace Gameplay
 
         public void Mark(MarkType mark)
         {
-            if (IsChangingMark)
+            if (IsChangingMark || _isMarked)
                 return;
 
             if (mark != _markType)
@@ -52,6 +55,7 @@ namespace Gameplay
             }
 
             _isMarked = true;
+            EnemyManager.Instance.TriggerEnemyMarked(this);
         }
 
         protected void WrongMark()
@@ -65,5 +69,10 @@ namespace Gameplay
         }
 
         protected abstract IEnumerator ChangingMark();
+        public virtual void Die()
+        {
+            Destroy(gameObject);
+            Died?.Invoke();
+        }
     }
 }

@@ -20,6 +20,9 @@ namespace Gameplay
         
         public int EnemiesCount => _enemies.Count;
 
+        public event Action<Enemy> EnemyMarked;
+
+        public event Action<Enemy> EnemyKilled;
 
         private void Awake()
         {
@@ -46,6 +49,18 @@ namespace Gameplay
             var enemy = Instantiate(enemyToSpawn, position, Quaternion.identity);
             enemy.Init(_player, _cell);
             _enemies.Add(enemy);
+        }
+
+        public void Kill(Enemy enemy)
+        {
+            _enemies.Remove(enemy);
+            enemy.Die();
+            EnemyKilled?.Invoke(enemy);
+        }
+
+        public void TriggerEnemyMarked(Enemy enemy)
+        {
+            EnemyMarked?.Invoke(enemy);
         }
     }
 }
