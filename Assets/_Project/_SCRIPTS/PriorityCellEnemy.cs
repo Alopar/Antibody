@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class FollowPlayerEnemy : Enemy
+    public class PriorityCellEnemy : Enemy
     {
         protected override void Update()
         {
@@ -12,7 +11,12 @@ namespace Gameplay
 
             Move();
 
-            if (Vector3.Distance(_player.transform.position, transform.position) <= _contactOffset)
+            if (_isMarked)
+            {
+                if (Vector3.Distance(_player.transform.position, transform.position) <= _contactOffset)
+                    Attack();
+            }
+            else if (Vector3.Distance(_cell.transform.position, transform.position) <= _contactOffset)
                 Attack();
         }
 
@@ -22,10 +26,24 @@ namespace Gameplay
                 return;
 
             _timer = 0;
-            Debug.Log("Attacking Player");
+            Debug.Log("Attacking " + (_isMarked ? "Player" : "Cell"));
         }
 
         protected override void Move()
+        {
+            if (IsMarked)
+            {
+                MoveMarked();
+                return;
+            }
+
+            if (Vector3.Distance(_cell.transform.position, transform.position) <= _contactOffset)
+                return;
+
+            transform.position = Vector3.MoveTowards(transform.position, _cell.transform.position, _moveSpeed * Time.deltaTime);
+        }
+
+        private void MoveMarked()
         {
             if (Vector3.Distance(_player.transform.position, transform.position) <= _contactOffset)
                 return;
