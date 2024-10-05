@@ -165,13 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2659fec7d739b284a8956d403590e888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
-  _moveSpeed: 2
-  _attackDistance: 1
-  _contactOffset: 1
-  _attackCooldown: 2
-  _attackDamage: 1
-  _changeMarkTime: 3
+  _health: 0
+  _moveSpeed: 0
+  _attackDistance: 0
+  _contactOffset: 0
+  _attackCooldown: 0
+  _attackDamage: 0
+  _changeMarkTime: 0
   _markType: 0
 --- !u!61 &5669807843085741187
 BoxCollider2D:
