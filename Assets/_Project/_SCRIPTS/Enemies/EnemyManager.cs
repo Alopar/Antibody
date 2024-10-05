@@ -20,6 +20,9 @@ namespace Gameplay
         
         public int EnemiesCount => _enemies.Count;
 
+        public event Action<Enemy> EnemyMarked;
+
+        public event Action<Enemy> EnemyKilled;
 
         private void Awake()
         {
@@ -31,15 +34,33 @@ namespace Gameplay
             Enemy enemyToSpawn = null;
 
             if (typeof(T) == _followPlayerEnemyPrefab.GetType())
+            {
                 enemyToSpawn = _followPlayerEnemyPrefab;
+                WavesManager.Instance.DecreaseFollowersToSpawn();
+            }
             else if (typeof(T) == _priorityCellEnemyPrefab.GetType())
+            {
                 enemyToSpawn = _priorityCellEnemyPrefab;
+                WavesManager.Instance.DecreaseCellFocusersToSpawn();
+            }
             else
                 Debug.LogError($"Enemy of type {typeof(T)} not found");
 
             var enemy = Instantiate(enemyToSpawn, position, Quaternion.identity);
             enemy.Init(_player, _cell);
             _enemies.Add(enemy);
+        }
+
+        public void Kill(Enemy enemy)
+        {
+            _enemies.Remove(enemy);
+            enemy.Die();
+            EnemyKilled?.Invoke(enemy);
+        }
+
+        public void TriggerEnemyMarked(Enemy enemy)
+        {
+            EnemyMarked?.Invoke(enemy);
         }
     }
 }

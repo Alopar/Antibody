@@ -14,5 +14,10 @@ namespace Gameplay
 
         public float SpawnCooldown => _spawnCooldown;
         public int AllowedMarks => _allowedMarks;
+        public int FollowPlayerEnemyCount => _followPlayerEnemyCount;
+        public int PrioritiseCellEnemyCount => _prioritiseCellEnemyCount;
+        public int FocusWeakCellEnemyCount => _focusWeakCellEnemyCount;
+        public int IgnorePlayerEnemyCount => _ignorePlayerEnemyCount;
+        public int EnemiesCount => _ignorePlayerEnemyCount + _focusWeakCellEnemyCount + _prioritiseCellEnemyCount + _followPlayerEnemyCount;
     }
 }

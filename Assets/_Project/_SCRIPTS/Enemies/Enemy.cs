@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 namespace Gameplay
@@ -14,14 +15,18 @@ namespace Gameplay
         [SerializeField] protected int _attackDamage;
         [SerializeField] protected float _changeMarkTime;
         [SerializeField] protected MarkType _markType;
+        [SerializeField] protected TMP_Text _markerText;
 
         protected CellTemp _cell;
         protected Player _player;
         protected float _timer;
         protected bool _isMarked;
 
+        public MarkType MarkType => _markType;
         public bool IsChangingMark => _markType == MarkType.None;
         public bool IsMarked => _isMarked;
+
+        public event Action Died;
 
         protected virtual void Awake()
         {
@@ -42,7 +47,7 @@ namespace Gameplay
 
         public void Mark(MarkType mark)
         {
-            if (IsChangingMark)
+            if (IsChangingMark || _isMarked)
                 return;
 
             if (mark != _markType)
@@ -52,6 +57,7 @@ namespace Gameplay
             }
 
             _isMarked = true;
+            EnemyManager.Instance.TriggerEnemyMarked(this);
         }
 
         protected void WrongMark()
@@ -61,9 +67,15 @@ namespace Gameplay
 
         protected void RandomiseMark()
         {
-            _markType = (MarkType)UnityEngine.Random.Range(0, 3);
+            _markType = (MarkType)UnityEngine.Random.Range(0, WavesManager.Instance.CurrentWave.AllowedMarks);
+            _markerText.text = _markType.ToString();
         }
 
         protected abstract IEnumerator ChangingMark();
+        public virtual void Die()
+        {
+            Destroy(gameObject);
+            Died?.Invoke();
+        }
     }
 }
