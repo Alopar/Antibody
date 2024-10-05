@@ -53,6 +53,7 @@ namespace Gameplay
         private void Init()
         {
             SetSelfIndex();
+            UpdateView(ViewState.Normal);
         }
 
         private void SetSelfIndex()
@@ -89,7 +90,7 @@ namespace Gameplay
                 return;
             }
 
-            var delta = current / max;
+            var delta = (float)current / max;
             if (delta <= 0.99 && delta > 0.75)
             {
                 UpdateView(ViewState.Sick);

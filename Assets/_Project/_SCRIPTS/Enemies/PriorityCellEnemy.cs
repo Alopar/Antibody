@@ -30,7 +30,7 @@ namespace Gameplay
             if (_isMarked)
                 _player.GetComponent<Health>().DealDamage(_attackDamage);
             else
-                Debug.Log("Attacking Cell");
+                _cell.GetComponent<Health>().DealDamage(_attackDamage);
         }
 
         protected override void Move()

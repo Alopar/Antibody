@@ -13,26 +13,18 @@ namespace Gameplay
         private float _invulnerabilityTimer;
         #endregion
 
-        #region EVENTS
-        #endregion
-
         #region METHODS PUBLIC
         public override void DealDamage(int value)
         {
             if (_invulnerabilityTimer > Time.time) return;
             base.DealDamage(value);
         }
-        #endregion
-        
-        #region METHODS PRIVATE
-        protected override void Init()
+
+        public void Resurrection()
         {
-            base.Init();
+            SetHealth(_healthMax);
             _invulnerabilityTimer = _invulnerabilityDuration + Time.time;
         }
-        #endregion
-
-        #region UNITY CALLBACKS
         #endregion
     }
 }
