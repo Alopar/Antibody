@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7873881504514760811}
   - component: {fileID: -306480141877695674}
   - component: {fileID: 1203075178426267193}
+  - component: {fileID: 9131022471496899365}
   - component: {fileID: 2796544657161430512}
   m_Layer: 0
   m_Name: PlayerModel
@@ -93,6 +94,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _moveAction: {fileID: -1680190386980627800, guid: c2ea5a0c8ab47b0499e005c956b19e67, type: 3}
+--- !u!114 &9131022471496899365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310176698395069609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db301973d1a894d4f958b8315bbb0b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootCooldown: 0.5
+  _shootPoint: {fileID: 7905827432375166326}
+  _projectilePrefab: {fileID: 6199465141426299431, guid: 95720f484171e044f947ec906b0301e7, type: 3}
+  _shootAction: {fileID: 1120369429361536294, guid: c2ea5a0c8ab47b0499e005c956b19e67, type: 3}
+  _markType: 0
 --- !u!114 &2796544657161430512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +180,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a792427a68add24ebae9bc14d5b55e6, type: 3}
+--- !u!4 &7905827432375166326 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6995750346674649990, guid: 5a792427a68add24ebae9bc14d5b55e6, type: 3}
+  m_PrefabInstance: {fileID: 910503146879000304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8779343211831508130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8463600617433932370, guid: 5a792427a68add24ebae9bc14d5b55e6, type: 3}
