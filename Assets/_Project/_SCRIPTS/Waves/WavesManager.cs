@@ -21,6 +21,7 @@ namespace Gameplay
         private int _weakCellsAttackersToSpawn;
 
         public WaveSO CurrentWave => _wavesData[_currentWave];
+        public int CurrentWaveIndex => _currentWave;
 
         public int FollowersToSpawn => _followersToSpawn;
         public int CellFocusersToSpawn => _cellFocusersToSpawn;

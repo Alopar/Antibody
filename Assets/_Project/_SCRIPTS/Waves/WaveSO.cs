@@ -18,5 +18,6 @@ namespace Gameplay
         public int PrioritiseCellEnemyCount => _prioritiseCellEnemyCount;
         public int FocusWeakCellEnemyCount => _focusWeakCellEnemyCount;
         public int IgnorePlayerEnemyCount => _ignorePlayerEnemyCount;
+        public int EnemiesCount => _ignorePlayerEnemyCount + _focusWeakCellEnemyCount + _prioritiseCellEnemyCount + _followPlayerEnemyCount;
     }
 }
