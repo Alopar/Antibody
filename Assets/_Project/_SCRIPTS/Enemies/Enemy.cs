@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 namespace Gameplay
@@ -14,6 +15,7 @@ namespace Gameplay
         [SerializeField] protected int _attackDamage;
         [SerializeField] protected float _changeMarkTime;
         [SerializeField] protected MarkType _markType;
+        [SerializeField] protected TMP_Text _markerText;
 
         protected CellTemp _cell;
         protected Player _player;
@@ -66,6 +68,7 @@ namespace Gameplay
         protected void RandomiseMark()
         {
             _markType = (MarkType)UnityEngine.Random.Range(0, WavesManager.Instance.CurrentWave.AllowedMarks);
+            _markerText.text = _markType.ToString();
         }
 
         protected abstract IEnumerator ChangingMark();
