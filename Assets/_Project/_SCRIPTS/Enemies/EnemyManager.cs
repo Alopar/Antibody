@@ -37,7 +37,9 @@ namespace Gameplay
             else
                 Debug.LogError($"Enemy of type {typeof(T)} not found");
 
-            Instantiate(enemyToSpawn, position, Quaternion.identity).Init(_player, _cell);
+            var enemy = Instantiate(enemyToSpawn, position, Quaternion.identity);
+            enemy.Init(_player, _cell);
+            _enemies.Add(enemy);
         }
     }
 }

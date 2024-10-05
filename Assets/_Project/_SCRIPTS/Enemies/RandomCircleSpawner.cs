@@ -5,7 +5,6 @@ namespace Gameplay
     public class RandomCircleSpawner : MonoBehaviour
     {
         [SerializeField] private float _spawnRadius;
-        [SerializeField] private float _spawnCooldown;
         [SerializeField] private float _spawnMaxAngleShift;
         [SerializeField] private float _spawnMinAngleShift;
 
@@ -21,7 +20,7 @@ namespace Gameplay
         {
             _timer += Time.deltaTime;
 
-            if (_timer >= _spawnCooldown)
+            if (_timer >= WavesManager.Instance.CurrentWave.SpawnCooldown)
                 Spawn();
         }
 
