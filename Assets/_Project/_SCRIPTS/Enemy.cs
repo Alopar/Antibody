@@ -1,51 +1,65 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour
     {
-        [SerializeField] private float _health;
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _attackDistance;
-        [SerializeField] private float _contactOffset;
-        [SerializeField] private float _attackCooldown;
-        [SerializeField] private float _attackDamage;
-        [SerializeField] private MarkType _mark;
+        [SerializeField] protected float _health;
+        [SerializeField] protected float _moveSpeed;
+        [SerializeField] protected float _attackDistance;
+        [SerializeField] protected float _contactOffset;
+        [SerializeField] protected float _attackCooldown;
+        [SerializeField] protected float _attackDamage;
+        [SerializeField] protected float _changeMarkTime;
+        [SerializeField] protected MarkType _markType;
 
-        private PlayerTemp _player;
-        private float _timer;
+        protected CellTemp _cell;
+        protected PlayerTemp _player;
+        protected float _timer;
+        protected bool _isMarked;
 
-        private void Awake()
+        public bool IsChangingMark => _markType == MarkType.None;
+        public bool IsMarked => _isMarked;
+
+        protected virtual void Awake()
         {
+            RandomiseMark();
             _player = FindAnyObjectByType<PlayerTemp>();
+            _cell = FindAnyObjectByType<CellTemp>();
         }
 
-        private void Update()
+        protected abstract void Update();
+        
+        protected abstract void Attack();
+
+        protected abstract void Move();
+
+        public void Mark(MarkType mark)
         {
-            _timer += Time.deltaTime;
-
-            MoveToPlayer();
-
-            if (Vector3.Distance(_player.transform.position, transform.position) <= _contactOffset)
-                Attack();
-        }
-
-        private void Attack()
-        {
-            if (_timer < _attackCooldown)
+            if (IsChangingMark)
                 return;
 
-            _timer = 0;
-            Debug.Log("Attacking Player");
-        }
-
-        private void MoveToPlayer()
-        {
-            if (Vector3.Distance(_player.transform.position, transform.position) <= _contactOffset)
+            if (mark != _markType)
+            {
+                WrongMark();
                 return;
+            }
 
-            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _moveSpeed * Time.deltaTime);
+            _isMarked = true;
         }
+
+        protected void WrongMark()
+        {
+            StartCoroutine(ChangingMark());
+        }
+
+        protected void RandomiseMark()
+        {
+            _markType = (MarkType)UnityEngine.Random.Range(0, 3);
+        }
+
+        protected abstract IEnumerator ChangingMark();
     }
 }
