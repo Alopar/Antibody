@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Gameplay
+{
+    public class EnemyManager : MonoBehaviour
+    {
+        #region SINGLETON
+        private static EnemyManager _instance;
+        public static EnemyManager Instance => _instance;
+        #endregion
+
+        [SerializeField] private FollowPlayerEnemy _followPlayerEnemyPrefab;
+        [SerializeField] private PriorityCellEnemy _priorityCellEnemyPrefab;
+        [SerializeField] private PlayerTemp _player;
+        [SerializeField] private CellTemp _cell;
+
+        private List<Enemy> _enemies = new();
+        
+        public int EnemiesCount => _enemies.Count;
+
+
+        private void Awake()
+        {
+            _instance = this;
+        }
+
+        public void SpawnEnemy<T>(Vector3 position) where T : Enemy 
+        {
+            Enemy enemyToSpawn = null;
+
+            if (typeof(T) == _followPlayerEnemyPrefab.GetType())
+                enemyToSpawn = _followPlayerEnemyPrefab;
+            else if (typeof(T) == _priorityCellEnemyPrefab.GetType())
+                enemyToSpawn = _priorityCellEnemyPrefab;
+            else
+                Debug.LogError($"Enemy of type {typeof(T)} not found");
+
+            Instantiate(enemyToSpawn, position, Quaternion.identity).Init(_player, _cell);
+        }
+    }
+}

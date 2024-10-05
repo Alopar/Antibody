@@ -26,8 +26,12 @@ namespace Gameplay
         protected virtual void Awake()
         {
             RandomiseMark();
-            _player = FindAnyObjectByType<PlayerTemp>();
-            _cell = FindAnyObjectByType<CellTemp>();
+        }
+
+        public void Init(PlayerTemp player, CellTemp cell)
+        {
+            _player = player;
+            _cell = cell;
         }
 
         protected abstract void Update();
