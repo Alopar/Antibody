@@ -22,7 +22,7 @@ namespace Gameplay
                 return;
 
             _timer = 0;
-            Debug.Log("Attacking Player");
+            _player.GetComponent<Health>().DealDamage(_attackDamage);
         }
 
         protected override void Move()

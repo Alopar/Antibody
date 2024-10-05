@@ -11,12 +11,12 @@ namespace Gameplay
         [SerializeField] protected float _attackDistance;
         [SerializeField] protected float _contactOffset;
         [SerializeField] protected float _attackCooldown;
-        [SerializeField] protected float _attackDamage;
+        [SerializeField] protected int _attackDamage;
         [SerializeField] protected float _changeMarkTime;
         [SerializeField] protected MarkType _markType;
 
         protected CellTemp _cell;
-        protected PlayerTemp _player;
+        protected Player _player;
         protected float _timer;
         protected bool _isMarked;
 
@@ -28,7 +28,7 @@ namespace Gameplay
             RandomiseMark();
         }
 
-        public void Init(PlayerTemp player, CellTemp cell)
+        public void Init(Player player, CellTemp cell)
         {
             _player = player;
             _cell = cell;

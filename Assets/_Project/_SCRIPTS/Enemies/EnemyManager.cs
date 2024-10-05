@@ -13,7 +13,7 @@ namespace Gameplay
 
         [SerializeField] private FollowPlayerEnemy _followPlayerEnemyPrefab;
         [SerializeField] private PriorityCellEnemy _priorityCellEnemyPrefab;
-        [SerializeField] private PlayerTemp _player;
+        [SerializeField] private Player _player;
         [SerializeField] private CellTemp _cell;
 
         private List<Enemy> _enemies = new();

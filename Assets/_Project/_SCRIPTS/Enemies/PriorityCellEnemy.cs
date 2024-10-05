@@ -26,7 +26,11 @@ namespace Gameplay
                 return;
 
             _timer = 0;
-            Debug.Log("Attacking " + (_isMarked ? "Player" : "Cell"));
+
+            if (_isMarked)
+                _player.GetComponent<Health>().DealDamage(_attackDamage);
+            else
+                Debug.Log("Attacking Cell");
         }
 
         protected override void Move()

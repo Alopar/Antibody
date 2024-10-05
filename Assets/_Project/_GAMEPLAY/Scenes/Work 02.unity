@@ -416,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followPlayerEnemyPrefab: {fileID: 3566369678181986248, guid: c882601510cf767488b5c5915b48fd07, type: 3}
   _priorityCellEnemyPrefab: {fileID: 2784529484146808655, guid: 78295443095dbd6489f206736422b41e, type: 3}
-  _player: {fileID: 2142003694}
+  _player: {fileID: 1372396544}
   _cell: {fileID: 1305403748}
 --- !u!4 &1092479451
 Transform:
@@ -635,17 +635,20 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6125978000135133330, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
---- !u!114 &2142003694 stripped
+--- !u!114 &1372396544 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2796544657161430512, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
+  m_CorrespondingSourceObject: {fileID: -2887204700655567633, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
   m_PrefabInstance: {fileID: 1372396543}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c71d70e4397fa45beaac794f6c608e, type: 3}
+  m_Script: {fileID: 11500000, guid: 20134fa2e801f154494d5ca1a67312c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
