@@ -39,7 +39,7 @@ namespace Gameplay
         #endregion
 
         #region METHODS PUBLIC
-        public void Clone()
+        public bool TryClone()
         {
             var points = _clonePoints.GetRange(0, 8);
             while (points.Count > 0)
@@ -53,11 +53,13 @@ namespace Gameplay
                 if (cell is not null) continue;
 
                 cell = Instantiate(_cellPrefab, point.Point.position, Quaternion.identity);
-                cell.name = $"Cell({x},{y})";
+                cell.name = $"Cell ({x}, {y})";
                 cell.SetGridIndex(x, y);
 
-                return;
+                return true;
             }
+
+            return false;
         }
         #endregion
     }

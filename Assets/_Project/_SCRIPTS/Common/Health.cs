@@ -6,13 +6,11 @@ namespace Gameplay
     public class Health : MonoBehaviour
     {
         #region FIELDS INSPECTOR
-        [SerializeField, Range(1, 100)] private int _healthMax;
-        [SerializeField, Range(0, 10)] private float _invulnerabilityDuration;
+        [SerializeField, Range(1, 100)] protected int _healthMax;
         #endregion
 
         #region FIELDS PRIVATE
-        private int _healthCurrent;
-        private float _invulnerabilityTimer;
+        protected int _healthCurrent;
         #endregion
 
         #region EVENTS
@@ -21,12 +19,9 @@ namespace Gameplay
         #endregion
 
         #region METHODS PUBLIC
-        public void DealDamage(int value)
+        public virtual void DealDamage(int value)
         {
-            if (_invulnerabilityTimer > Time.time) return;
-
-            _healthCurrent -= value;
-            OnHealthChange?.Invoke(_healthCurrent, _healthMax);
+            ChangeHealth(-value);
 
             if (_healthCurrent > 0) return;
             OnDied?.Invoke();
@@ -34,10 +29,20 @@ namespace Gameplay
         #endregion
         
         #region METHODS PRIVATE
-        private void Init()
+        protected virtual void Init()
         {
-            _healthCurrent = _healthMax;
-            _invulnerabilityTimer = _invulnerabilityDuration + Time.time;
+            SetHealth(_healthMax);
+        }
+
+        private void ChangeHealth(int value)
+        {
+            SetHealth(_healthCurrent + value);
+        }
+
+        protected void SetHealth(int value)
+        {
+            _healthCurrent = value;
+            OnHealthChange?.Invoke(_healthCurrent, _healthMax);
         }
         #endregion
 
