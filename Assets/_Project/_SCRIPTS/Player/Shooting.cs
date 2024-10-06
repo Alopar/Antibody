@@ -1,5 +1,3 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,11 +18,11 @@ namespace Gameplay
 
         [Space(10)]
         [SerializeField] private LookAtPointer _look;
-        [SerializeField] private TextMeshPro _markerText;
         #endregion
 
         #region FIELDS PRIVATE
         private float _cooldownTimer;
+        private Marker _marker;
         private MarkType _markType;
         private bool _isShoot;
         #endregion
@@ -34,23 +32,29 @@ namespace Gameplay
         #endregion
 
         #region METHODS PRIVATE
-        private void Init()
+        private void Reload()
         {
-            _markerText.text = _markType.ToString();
+            if (_marker) return;
+            if (_cooldownTimer > Time.time) return;
+
+            _marker = Instantiate(_projectilePrefab, _shootPoint);
+            _marker.SetMark(_markType);
         }
 
         private void Shoot()
         {
             _isShoot = false;
-            if (_cooldownTimer > Time.time) return;
+            if (!_marker) return;
             if (!_shootAction.action.IsPressed()) return;
 
             _isShoot = true;
-            _cooldownTimer = _shootCooldown + Time.time;
             var direction = _look.PointerPosition - _shootPoint.position;
-            var projectile = Instantiate(_projectilePrefab, _shootPoint.position, _shootPoint.rotation);
-            projectile.transform.right = direction;
-            projectile.SetMark(_markType);
+            _marker.transform.right = direction;
+            _marker.transform.SetParent(null);
+            _marker.Throw();
+            _marker = null;
+
+            _cooldownTimer = _shootCooldown + Time.time;
         }
 
         private void SwitchMarker()
@@ -59,19 +63,15 @@ namespace Gameplay
 
             _markType += 1;
             _markType = _markType == MarkType.None ? MarkType.X : _markType;
-            _markerText.text = _markType.ToString();
+            _marker?.SetMark(_markType);
         }
         #endregion
 
         #region UNITY CALLBACKS
-        private void Awake()
-        {
-            Init();
-        }
-
         private void Update()
         {
             Shoot();
+            Reload();
             SwitchMarker();
         }
         #endregion
