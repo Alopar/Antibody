@@ -1,0 +1,42 @@
+cell.png
+size:720,1015
+filter:Linear,Linear
+pma:true
+body
+bounds:2,575,342,218
+body 13
+bounds:346,798,342,215
+body damaged half
+bounds:2,358,342,215
+body super
+bounds:2,795,342,218
+damaged
+bounds:346,394,302,197
+damaged 13
+bounds:2,153,306,203
+damaged half
+bounds:346,593,308,203
+eye brows
+bounds:675,124,180,43
+rotate:90
+eye damaged half
+bounds:540,252,98,72
+rotate:90
+eyes
+bounds:650,306,244,59
+rotate:90
+eyes damaged
+bounds:346,352,261,40
+eyes damaged 13
+bounds:310,146,252,60
+eyes super
+bounds:656,552,244,59
+rotate:90
+nachinka
+bounds:310,208,228,142
+nachinka 13
+bounds:232,2,222,142
+nachinka half
+bounds:456,2,217,142
+nachinka super
+bounds:2,9,228,142
