@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Gameplay
 {
@@ -10,6 +11,8 @@ namespace Gameplay
         #endregion
 
         public static bool ShowTutorial = true;
+
+        public event System.Action RoundEnded;
 
         private void Awake()
         {
@@ -32,7 +35,7 @@ namespace Gameplay
         {
             if (EnemyManager.Instance.EnemiesCount == 0)
             {
-                WavesManager.Instance.NextWave();
+                StartCoroutine(EndRound());
             }
         }
 
@@ -40,6 +43,20 @@ namespace Gameplay
         {
             Pauser.Instance.Pause();
             UIManager.Instance.DefeatMenu.SetActive(true);
+        }
+
+        private IEnumerator EndRound()
+        {
+            yield return new WaitForSeconds(1);
+            RoundEnded?.Invoke();
+
+            yield return new WaitForSeconds(3);
+            WavesManager.Instance.NextWave();
+        }
+
+        private void OnDestroy()
+        {
+            Cell.CellDied -= OnCellDie;
         }
     }
 }

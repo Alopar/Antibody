@@ -491,6 +491,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6184832426556054780, guid: 70f695d9f6621f349b1a01023e5395a0, type: 3}
+      propertyPath: _delay
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184832426556054780, guid: 70f695d9f6621f349b1a01023e5395a0, type: 3}
       propertyPath: _overshoot
       value: 4
       objectReference: {fileID: 0}

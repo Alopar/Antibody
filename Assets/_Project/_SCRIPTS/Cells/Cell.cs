@@ -102,7 +102,7 @@ namespace Gameplay
             }
         }
 
-        private void WaveNumberIncreased()
+        private void RoundEnded()
         {
             if (_health.IsDamaged)
             {
@@ -127,14 +127,14 @@ namespace Gameplay
         {
             _health.OnDied += Died;
             _health.OnHealthChange += HealthChange;
-            WavesManager.Instance.WaveNumberIncreased += WaveNumberIncreased;
+            GameFlow.Instance.RoundEnded += RoundEnded;
         }
 
         private void OnDisable()
         {
             _health.OnDied -= Died;
             _health.OnHealthChange -= HealthChange;
-            WavesManager.Instance.WaveNumberIncreased -= WaveNumberIncreased;
+            GameFlow.Instance.RoundEnded -= RoundEnded;
         }
         #endregion
     }
