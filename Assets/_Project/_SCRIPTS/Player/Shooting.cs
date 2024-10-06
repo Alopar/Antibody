@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -73,6 +74,14 @@ namespace Gameplay
             Shoot();
             Reload();
             SwitchMarker();
+        }
+
+        private void OnDisable()
+        {
+            if(!_marker) return;
+
+            Destroy(_marker.gameObject);
+            _marker = null;
         }
         #endregion
     }

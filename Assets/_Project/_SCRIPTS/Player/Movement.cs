@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +34,11 @@ namespace Gameplay
         private void Update()
         {
             Move();
+        }
+
+        private void OnDisable()
+        {
+            _isMove = false;
         }
         #endregion
     }

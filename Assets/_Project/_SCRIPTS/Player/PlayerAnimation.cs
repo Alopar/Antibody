@@ -7,9 +7,10 @@ namespace Gameplay
     public class PlayerAnimation : MonoBehaviour
     {
         #region FIELDS INSPECTOR
-        [SerializeField] private SkeletonAnimation _skeleton;
-        [SerializeField] private Movement _movement;
+        [SerializeField] private Player _player;
         [SerializeField] private Shooting _shooting;
+        [SerializeField] private Movement _movement;
+        [SerializeField] private SkeletonAnimation _skeleton;
         #endregion
 
         #region FIELDS PRIVATE
@@ -20,10 +21,8 @@ namespace Gameplay
         private void UpdateState()
         {
             var animation = "idle";
-            if (_movement.IsMove)
-            {
-                animation = "walk";
-            }
+            animation = _movement.IsMove ? "walk" : animation;
+            animation = _player.IsDie ? "death" : animation;
 
             if (_shooting.IsShoot)
             {
@@ -31,7 +30,10 @@ namespace Gameplay
             }
 
             if (_currentAnimation == animation) return;
+
             _skeleton.AnimationName = animation;
+            _skeleton.loop = animation == "death" ? false : true;
+            _skeleton.AnimationState.TimeScale = animation == "death" ? 0.5f : 1f;
         }
         #endregion
 

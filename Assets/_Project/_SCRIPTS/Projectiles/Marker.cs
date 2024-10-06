@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
+    [SelectionBase]
     public class Marker : MonoBehaviour
     {
         #region FIELDS INSPECTOR

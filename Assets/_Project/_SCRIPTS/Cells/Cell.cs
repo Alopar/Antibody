@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
+    [SelectionBase]
     public class Cell : MonoBehaviour
     {
         #region FIELDS INSPECTOR

@@ -16,7 +16,9 @@ namespace Gameplay
         #region METHODS PUBLIC
         public override void DealDamage(int value)
         {
+            if (!enabled) return;
             if (_invulnerabilityTimer > Time.time) return;
+
             base.DealDamage(value);
         }
 

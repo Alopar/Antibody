@@ -43,10 +43,10 @@ GameObject:
   - component: {fileID: 7873881504514760811}
   - component: {fileID: -2887204700655567633}
   - component: {fileID: -6219012313990156016}
-  - component: {fileID: 6870483086695152110}
   - component: {fileID: 9131022471496899365}
   - component: {fileID: 1203075178426267193}
   - component: {fileID: -306480141877695674}
+  - component: {fileID: 6870483086695152110}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -82,7 +82,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20134fa2e801f154494d5ca1a67312c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resurrectionDelay: 5
   _health: {fileID: -6219012313990156016}
+  _shooting: {fileID: 9131022471496899365}
+  _movement: {fileID: 1203075178426267193}
+  _lookAtPointer: {fileID: -306480141877695674}
 --- !u!114 &-6219012313990156016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,21 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthMax: 10
   _invulnerabilityDuration: 5
---- !u!114 &6870483086695152110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5310176698395069609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5deaee70167703f4ba39352eed63f29d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _skeleton: {fileID: 7099022987114637114}
-  _movement: {fileID: 1203075178426267193}
-  _shooting: {fileID: 9131022471496899365}
 --- !u!114 &9131022471496899365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +145,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9272bea906c1044909c55e9283307f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6870483086695152110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310176698395069609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5deaee70167703f4ba39352eed63f29d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: -2887204700655567633}
+  _shooting: {fileID: 9131022471496899365}
+  _movement: {fileID: 1203075178426267193}
+  _skeleton: {fileID: 7099022987114637114}
 --- !u!1001 &910503146879000304
 PrefabInstance:
   m_ObjectHideFlags: 0
