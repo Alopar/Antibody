@@ -9,6 +9,8 @@ namespace Gameplay
         public static GameFlow Instance => _instance;
         #endregion
 
+        public static bool ShowTutorial = true;
+
         private void Awake()
         {
             _instance = this;
@@ -17,6 +19,13 @@ namespace Gameplay
         private void Start()
         {
             EnemyManager.Instance.EnemyKilled += OnEnemyKilled;
+            Cell.CellDied += OnCellDie;
+        }
+
+        private void OnCellDie(Cell cell)
+        {
+            if (Cell.CellsCount <= 0)
+                Lose();
         }
 
         private void OnEnemyKilled(Enemy enemy)
@@ -27,26 +36,10 @@ namespace Gameplay
             }
         }
 
-        public void StartGame()
+        public void Lose()
         {
-            UIManager.Instance.StartMenu.SetActive(false);
-        }
-    }
-
-    public class UIManager : MonoBehaviour
-    {
-        #region SINGLETONE
-        private static UIManager _instance;
-        public static UIManager Instance => _instance;
-        #endregion
-
-        [SerializeField] private GameObject _startMenu;
-
-        public GameObject StartMenu => _startMenu;
-
-        private void Awake()
-        {
-            _instance = this;
+            Pauser.Instance.Pause();
+            UIManager.Instance.DefeatMenu.SetActive(true);
         }
     }
 }
