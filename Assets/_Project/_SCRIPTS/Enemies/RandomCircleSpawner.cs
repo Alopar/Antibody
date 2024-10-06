@@ -34,7 +34,7 @@ namespace Gameplay
         {
             _timer += Time.deltaTime;
 
-            if (_timer >= WavesManager.Instance.CurrentWave.SpawnCooldown)
+            if (_timer >= _spawnCooldown)
                 Spawn();
         }
 
