@@ -1,0 +1,63 @@
+virus.png
+size:2004,363
+filter:Linear,Linear
+pma:true
+arrow1
+bounds:738,107,123,254
+arrow2
+bounds:1021,119,236,242
+arrow3
+bounds:610,15,246,74
+arrow4
+bounds:1835,59,105,74
+rotate:90
+body
+bounds:262,53,308,250
+rotate:90
+circles1
+bounds:1823,166,195,179
+rotate:90
+circles2
+bounds:1572,153,208,72
+rotate:90
+circles3
+bounds:1721,156,100,205
+circles4
+bounds:858,2,106,103
+eyes
+bounds:626,106,255,110
+rotate:90
+n active
+bounds:966,2,114,178
+rotate:90
+n passive
+bounds:1146,3,114,144
+rotate:90
+spike1
+bounds:863,118,156,243
+spike2
+bounds:2,20,341,258
+rotate:90
+spike3
+bounds:514,91,270,110
+rotate:90
+spike4
+bounds:514,11,94,78
+stick1
+bounds:1259,132,128,229
+stick2
+bounds:1389,147,214,181
+rotate:90
+stick3
+bounds:1646,154,207,73
+rotate:90
+stick4
+bounds:1292,17,101,113
+x active
+bounds:1395,8,111,137
+x passive
+bounds:1508,8,111,137
+y active
+bounds:1621,19,105,132
+y passive
+bounds:1728,22,105,132
