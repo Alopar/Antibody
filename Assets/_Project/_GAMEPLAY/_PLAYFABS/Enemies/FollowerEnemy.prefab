@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 5
-  _moveSpeed: 1.2
+  _moveSpeed: 2.1
   _attackDistance: 1
   _contactOffset: 1
   _attackCooldown: 1
