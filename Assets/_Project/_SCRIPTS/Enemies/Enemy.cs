@@ -85,7 +85,8 @@ namespace Gameplay
         protected abstract IEnumerator ChangingMark();
         public virtual void Die()
         {
-            Destroy(gameObject);
+            Destroy(this);
+            Destroy(gameObject, 0.7f);
             Died?.Invoke();
         }
 
