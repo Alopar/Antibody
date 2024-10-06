@@ -71,6 +71,8 @@ namespace Gameplay
         protected void WrongMark()
         {
             StartCoroutine(ChangingMark());
+            _skeleton.Skeleton.SetSkin(_skinPrefix + " question");
+            _skeleton.Skeleton.SetSlotsToSetupPose();
         }
 
         protected void RandomiseMark()
