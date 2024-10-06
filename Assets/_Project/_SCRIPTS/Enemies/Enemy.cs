@@ -17,7 +17,7 @@ namespace Gameplay
         [SerializeField] protected MarkType _markType;
         [SerializeField] protected TMP_Text _markerText;
 
-        protected CellTemp _cell;
+        protected Cell _cell;
         protected Player _player;
         protected float _timer;
         protected bool _isMarked;
@@ -33,7 +33,7 @@ namespace Gameplay
             RandomiseMark();
         }
 
-        public void Init(Player player, CellTemp cell)
+        public void Init(Player player, Cell cell)
         {
             _player = player;
             _cell = cell;

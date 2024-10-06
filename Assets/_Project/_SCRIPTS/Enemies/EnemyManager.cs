@@ -14,7 +14,7 @@ namespace Gameplay
         [SerializeField] private FollowPlayerEnemy _followPlayerEnemyPrefab;
         [SerializeField] private PriorityCellEnemy _priorityCellEnemyPrefab;
         [SerializeField] private Player _player;
-        [SerializeField] private CellTemp _cell;
+        [SerializeField] private Cell _cell;
 
         private List<Enemy> _enemies = new();
         
@@ -47,7 +47,9 @@ namespace Gameplay
                 Debug.LogError($"Enemy of type {typeof(T)} not found");
 
             var enemy = Instantiate(enemyToSpawn, position, Quaternion.identity);
-            enemy.Init(_player, _cell);
+            var cells = FindObjectsByType<Cell>(FindObjectsSortMode.None);
+
+            enemy.Init(_player, cells[UnityEngine.Random.Range(0, cells.Length)]);
             _enemies.Add(enemy);
         }
 
