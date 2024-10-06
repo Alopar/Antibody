@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5829586935737738718}
   - component: {fileID: 2161538797296313857}
   - component: {fileID: 1387662183433513412}
+  - component: {fileID: 6184832426556054780}
   m_Layer: 0
   m_Name: Spine GameObject (cell)
   m_TagString: Untagged
@@ -162,3 +163,23 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &6184832426556054780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569399711647631283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9940ea4d232684a9c329d97d736c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delay: 0
+  _scaleTime: 1
+  _overshoot: 2
+  _startWithZeroScale: 1
+  _ignoreTimeScale: 0
+  _scaleToObjectInitialScale: 1
+  _scale: 0
+  _ease: 27

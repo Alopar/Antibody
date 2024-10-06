@@ -1218,12 +1218,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9940ea4d232684a9c329d97d736c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scale: 1
   _delay: 0
   _scaleTime: 0.7
   _overshoot: 1
   _startWithZeroScale: 1
   _ignoreTimeScale: 1
+  _scaleToObjectInitialScale: 1
+  _scale: 1
   _ease: 27
 --- !u!1 &614565412
 GameObject:
@@ -2088,12 +2089,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9940ea4d232684a9c329d97d736c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scale: 1
   _delay: 0.3
   _scaleTime: 0.7
   _overshoot: 1
   _startWithZeroScale: 1
   _ignoreTimeScale: 1
+  _scaleToObjectInitialScale: 1
+  _scale: 1
   _ease: 27
 --- !u!1 &1208216183
 GameObject:
@@ -3515,12 +3517,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9940ea4d232684a9c329d97d736c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scale: 1
   _delay: 0
   _scaleTime: 0.3
   _overshoot: 1
   _startWithZeroScale: 1
   _ignoreTimeScale: 1
+  _scaleToObjectInitialScale: 1
+  _scale: 1
   _ease: 27
 --- !u!1 &2052128770
 GameObject:
