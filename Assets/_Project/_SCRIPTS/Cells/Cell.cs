@@ -1,26 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Spine.Unity;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public enum ViewState
-    {
-        Strong,
-        Normal,
-        Sick,
-        Damaged,
-        Dying,
-    }
-
-    [Serializable]
-    public class CellView
-    {
-        public ViewState State;
-        public GameObject View;
-    }
-
     public class Cell : MonoBehaviour
     {
         #region FIELDS INSPECTOR
@@ -28,7 +10,7 @@ namespace Gameplay
         [SerializeField] private Cloning _cloning;
 
         [Space(10)]
-        [SerializeField] private List<CellView> _views;
+        [SerializeField] private SkeletonAnimation _skeleton;
         #endregion
 
         #region FIELDS PRIVATE
@@ -53,7 +35,7 @@ namespace Gameplay
         private void Init()
         {
             SetSelfIndex();
-            UpdateView(ViewState.Normal);
+            UpdateView("full");
         }
 
         private void SetSelfIndex()
@@ -62,10 +44,11 @@ namespace Gameplay
             _grid[_gridIndex.x, GridIndex.y] = this;
         }
 
-        private void UpdateView(ViewState state)
+        private void UpdateView(string skin)
         {
-            _views.ForEach(e => e.View.SetActive(false));
-            _views.First(e => e.State == state).View.SetActive(true);
+            _skeleton.Skeleton.SetSkin(skin);
+            _skeleton.Skeleton.SetSlotsToSetupPose();
+            _skeleton.LateUpdate();
         }
         #endregion
 
@@ -80,32 +63,32 @@ namespace Gameplay
         {
             if (_health.IsIncreased)
             {
-                UpdateView(ViewState.Strong);
+                UpdateView("super");
                 return;
             }
 
             if (!_health.IsDamaged)
             {
-                UpdateView(ViewState.Normal);
+                UpdateView("full");
                 return;
             }
 
             var delta = (float)current / max;
             if (delta <= 0.99 && delta > 0.75)
             {
-                UpdateView(ViewState.Sick);
+                UpdateView("damaged");
                 return;
             }
             
             if (delta <= 0.75 && delta > 0.50)
             {
-                UpdateView(ViewState.Damaged);
+                UpdateView("half");
                 return;
             }
             
             if (delta <= 0.50)
             {
-                UpdateView(ViewState.Dying);
+                UpdateView("third");
                 return;
             }
         }
