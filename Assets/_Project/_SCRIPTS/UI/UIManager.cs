@@ -17,7 +17,5 @@ namespace Gameplay
         {
             _instance = this;
         }
-
-
     }
 }
