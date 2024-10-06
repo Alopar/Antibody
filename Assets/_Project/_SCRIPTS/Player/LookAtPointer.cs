@@ -7,15 +7,20 @@ namespace Gameplay
     {
         #region FIELDS PRIVATE
         private Camera _cameraCache;
+        private Vector3 _pointerPosition;
+        #endregion
+
+        #region PROPERTIES
+        public Vector3 PointerPosition => _pointerPosition;
         #endregion
 
         #region METHODS PRIVATE
         private void LookAtMousePosition()
         {
-            var pointerPoint = _cameraCache.ScreenToWorldPoint(Input.mousePosition);
-            pointerPoint.z = transform.position.z;
+            _pointerPosition = _cameraCache.ScreenToWorldPoint(Input.mousePosition);
+            _pointerPosition.z = transform.position.z;
 
-            var direction = pointerPoint - transform.position;
+            var direction = _pointerPosition - transform.position;
             var scale = transform.localScale;
             scale.x = direction.x < 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
             transform.localScale = scale;

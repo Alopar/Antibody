@@ -9,6 +9,7 @@ namespace Gameplay
         #region FIELDS INSPECTOR
         [SerializeField] private SkeletonAnimation _skeleton;
         [SerializeField] private Movement _movement;
+        [SerializeField] private Shooting _shooting;
         #endregion
 
         #region FIELDS PRIVATE
@@ -24,31 +25,14 @@ namespace Gameplay
                 animation = "walk";
             }
 
+            if (_shooting.IsShoot)
+            {
+                _skeleton.AnimationState.SetAnimation(1, "attack", false);
+            }
+
             if (_currentAnimation == animation) return;
             _skeleton.AnimationName = animation;
-            // _skeleton.AnimationState.SetAnimation(0, "idle", true);
         }
-        
-        // private void OnMove(Vector3 direction)
-        // {
-        //     if (!_moving)
-        //     {
-        //         _animation.SetAnimation(0, _walk, true);
-        //         _moving = true;
-        //     }
-        //
-        //     if (direction.x > 0)
-        //         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
-        //     else
-        //         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        // }
-        //
-        // private void OnAttack()
-        // {
-        //     _animation.SetAnimation(0, _attack, false);
-        //     _animation.AddAnimation(0, _eat, false, 0);
-        //     _animation.AddAnimation(0, _idle, true, 0);
-        // }
         #endregion
 
         #region UNITY CALLBACKS

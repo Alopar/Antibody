@@ -19,12 +19,18 @@ namespace Gameplay
         [SerializeField] private InputActionReference _switchWeaponAction;
 
         [Space(10)]
+        [SerializeField] private LookAtPointer _look;
         [SerializeField] private TextMeshPro _markerText;
         #endregion
 
         #region FIELDS PRIVATE
         private float _cooldownTimer;
         private MarkType _markType;
+        private bool _isShoot;
+        #endregion
+
+        #region PROPERTIES
+        public bool IsShoot => _isShoot;
         #endregion
 
         #region METHODS PRIVATE
@@ -35,11 +41,15 @@ namespace Gameplay
 
         private void Shoot()
         {
+            _isShoot = false;
             if (_cooldownTimer > Time.time) return;
             if (!_shootAction.action.IsPressed()) return;
 
+            _isShoot = true;
             _cooldownTimer = _shootCooldown + Time.time;
+            var direction = _look.PointerPosition - _shootPoint.position;
             var projectile = Instantiate(_projectilePrefab, _shootPoint.position, _shootPoint.rotation);
+            projectile.transform.right = direction;
             projectile.SetMark(_markType);
         }
 
