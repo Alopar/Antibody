@@ -130,13 +130,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerModel
       objectReference: {fileID: 0}
+    - target: {fileID: 6019440515636664020, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7873881504514760811, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7873881504514760811, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7873881504514760811, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -173,10 +177,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6125978000135133330, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575c7007ea1053b42a153df60ed2fdb8, type: 3}
 --- !u!1 &130646482
 GameObject:
@@ -401,7 +402,7 @@ MonoBehaviour:
     CustomLookAtTarget: 1
   Lens:
     FieldOfView: 40
-    OrthographicSize: 10
+    OrthographicSize: 20
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -428,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 297520717}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -448,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 0, z: 0}
   ApplyAfter: 0
-  PreserveComposition: 0
+  PreserveComposition: 1
 --- !u!114 &297520721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,7 +932,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -956,7 +957,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1785,7 +1786,6 @@ GameObject:
   m_Component:
   - component: {fileID: 924040957}
   - component: {fileID: 924040956}
-  - component: {fileID: 924040955}
   - component: {fileID: 924040954}
   m_Layer: 0
   m_Name: CenterCamera
@@ -1809,25 +1809,6 @@ MonoBehaviour:
   Offset: {x: 0, y: 0, z: 0}
   ApplyAfter: 0
   PreserveComposition: 0
---- !u!114 &924040955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924040953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrackerSettings:
-    BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
-    AngularDampingMode: 0
-    RotationDamping: {x: 1, y: 1, z: 1}
-    QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 0, z: -10}
 --- !u!114 &924040956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,6 +2495,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 194506904294969730, guid: f8237c8710187b34fa2e4f74d4399225, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2779685052652715641, guid: f8237c8710187b34fa2e4f74d4399225, type: 3}
       propertyPath: _markerType
       value: 1
@@ -2933,6 +2918,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 194506904294969730, guid: f8237c8710187b34fa2e4f74d4399225, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2779685052652715641, guid: f8237c8710187b34fa2e4f74d4399225, type: 3}
       propertyPath: _markerType
       value: 2
@@ -3891,8 +3880,8 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1390755067}
   - {fileID: 360521634}
-  - {fileID: 1524069588}
-  - {fileID: 1353903059}
   - {fileID: 6853094496722060151}
-  - {fileID: 2575923728777074224}
+  - {fileID: 1353903059}
+  - {fileID: 1524069588}
   - {fileID: 115999965}
+  - {fileID: 2575923728777074224}
