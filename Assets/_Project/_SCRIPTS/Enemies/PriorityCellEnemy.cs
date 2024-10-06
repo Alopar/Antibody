@@ -31,6 +31,8 @@ namespace Gameplay
                 _player.GetComponent<Health>().DealDamage(_attackDamage);
             else
                 _cell.GetComponent<Health>().DealDamage(_attackDamage);
+
+            TriggerAttack();
         }
 
         protected override void Move()
@@ -45,6 +47,7 @@ namespace Gameplay
                 return;
 
             transform.position = Vector3.MoveTowards(transform.position, _cell.transform.position, _moveSpeed * Time.deltaTime);
+            TriggerMoved(_cell.transform.position - transform.position);
         }
 
         private void MoveMarked()
@@ -53,6 +56,7 @@ namespace Gameplay
                 return;
 
             transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _moveSpeed * Time.deltaTime);
+            TriggerMoved(_player.transform.position - transform.position);
         }
 
         protected override IEnumerator ChangingMark()
@@ -63,7 +67,6 @@ namespace Gameplay
 
             yield return new WaitForSeconds(_changeMarkTime);
             RandomiseMark();
-
         }
     }
 }

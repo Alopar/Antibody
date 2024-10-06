@@ -1,3 +1,5 @@
+using Spine;
+using Spine.Unity;
 using System;
 using System.Collections;
 using TMPro;
@@ -15,7 +17,8 @@ namespace Gameplay
         [SerializeField] protected int _attackDamage;
         [SerializeField] protected float _changeMarkTime;
         [SerializeField] protected MarkType _markType;
-        [SerializeField] protected TMP_Text _markerText;
+        [SerializeField] protected SkeletonAnimation _skeleton;
+        [SerializeField] protected string _skinPrefix;
 
         protected Cell _cell;
         protected Player _player;
@@ -27,6 +30,8 @@ namespace Gameplay
         public bool IsMarked => _isMarked;
 
         public event Action Died;
+        public event Action Attacked;
+        public event Action<Vector3> Moved;
 
         protected virtual void Awake()
         {
@@ -56,6 +61,9 @@ namespace Gameplay
                 return;
             }
 
+            _skeleton.Skeleton.SetSkin(_skinPrefix + _markType.ToString() + " active");
+            _skeleton.Skeleton.SetSlotsToSetupPose();
+
             _isMarked = true;
             EnemyManager.Instance.TriggerEnemyMarked(this);
         }
@@ -68,7 +76,8 @@ namespace Gameplay
         protected void RandomiseMark()
         {
             _markType = (MarkType)UnityEngine.Random.Range(0, WavesManager.Instance.CurrentWave.AllowedMarks);
-            _markerText.text = _markType.ToString();
+            _skeleton.Skeleton.SetSkin(_skinPrefix + _markType.ToString() + " passive");
+            _skeleton.Skeleton.SetSlotsToSetupPose();
         }
 
         protected abstract IEnumerator ChangingMark();
@@ -76,6 +85,16 @@ namespace Gameplay
         {
             Destroy(gameObject);
             Died?.Invoke();
+        }
+
+        protected void TriggerAttack()
+        {
+            Attacked?.Invoke();
+        }
+        
+        protected void TriggerMoved(Vector3 direction)
+        {
+            Moved?.Invoke(direction);
         }
     }
 }
