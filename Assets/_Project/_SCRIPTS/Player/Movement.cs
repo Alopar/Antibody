@@ -6,7 +6,7 @@ namespace Gameplay
     public class Movement : MonoBehaviour
     {
         #region FIELDS INSPECTOR
-        [SerializeField, Range(0, 10)] private float _speed = 1f;
+        [SerializeField, Range(0, 99)] private float _speed = 1f;
         [SerializeField] private InputActionReference _moveAction;
         #endregion
 

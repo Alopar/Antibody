@@ -6,7 +6,7 @@ namespace Gameplay
     public class Marker : MonoBehaviour
     {
         #region FIELDS INSPECTOR
-        [SerializeField, Range(0, 10)] private float _speed = 1;
+        [SerializeField, Range(0, 99)] private float _speed = 1;
 
         [Space(10)]
         [SerializeField] private Sprite _x;
