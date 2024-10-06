@@ -24,12 +24,16 @@ namespace Gameplay
 
         private void Restart()
         {
+            UIManager.Instance.Blackout.Blackout(true, false, () => 
+            {
 #if UNITY_EDITOR
-            EditorSceneManager.LoadSceneInPlayMode(SceneManager.GetActiveScene().path, new LoadSceneParameters());
-            Pauser.Instance.Resume();
+                EditorSceneManager.LoadSceneInPlayMode(SceneManager.GetActiveScene().path, new LoadSceneParameters());
 #else
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 #endif
+                Pauser.Instance.Resume();
+            });
+
         }
     }
 }
