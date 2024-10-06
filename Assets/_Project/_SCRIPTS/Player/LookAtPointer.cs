@@ -8,15 +8,17 @@ namespace Gameplay
         #region FIELDS PRIVATE
         private Camera _cameraCache;
         #endregion
-        
+
         #region METHODS PRIVATE
         private void LookAtMousePosition()
         {
             var pointerPoint = _cameraCache.ScreenToWorldPoint(Input.mousePosition);
             pointerPoint.z = transform.position.z;
-            
+
             var direction = pointerPoint - transform.position;
-            transform.right = direction.normalized;
+            var scale = transform.localScale;
+            scale.x = direction.x < 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            transform.localScale = scale;
         }
         #endregion
 

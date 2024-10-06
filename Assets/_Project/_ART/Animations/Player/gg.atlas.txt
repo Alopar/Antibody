@@ -1,0 +1,13 @@
+gg.png
+size:180,484
+filter:Linear,Linear
+pma:true
+body
+bounds:2,208,274,173
+rotate:90
+eyes
+bounds:122,2,204,56
+rotate:90
+nachinka
+bounds:2,49,157,118
+rotate:90

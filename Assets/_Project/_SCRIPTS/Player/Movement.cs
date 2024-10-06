@@ -10,10 +10,20 @@ namespace Gameplay
         [SerializeField] private InputActionReference _moveAction;
         #endregion
 
+        #region FIELDS PRIVATE
+        private bool _isMove;
+        #endregion
+
+        #region PROPERTIES
+        public bool IsMove => _isMove;
+        #endregion
+
         #region METHODS PRIVATE
         private void Move()
         {
             var moveValue = _moveAction.action.ReadValue<Vector2>();
+            _isMove = moveValue != Vector2.zero;
+
             var direction = new Vector3(moveValue.x, moveValue.y, 0);
             transform.position += direction * _speed * Time.deltaTime;
         }
