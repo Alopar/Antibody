@@ -26,5 +26,27 @@ namespace Gameplay
                 WavesManager.Instance.NextWave();
             }
         }
+
+        public void StartGame()
+        {
+            UIManager.Instance.StartMenu.SetActive(false);
+        }
+    }
+
+    public class UIManager : MonoBehaviour
+    {
+        #region SINGLETONE
+        private static UIManager _instance;
+        public static UIManager Instance => _instance;
+        #endregion
+
+        [SerializeField] private GameObject _startMenu;
+
+        public GameObject StartMenu => _startMenu;
+
+        private void Awake()
+        {
+            _instance = this;
+        }
     }
 }

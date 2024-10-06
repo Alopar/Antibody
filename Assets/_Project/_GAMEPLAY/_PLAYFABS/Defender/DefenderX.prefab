@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 194506904294969730}
   - component: {fileID: 6686589419483253963}
   - component: {fileID: 8768854473427625178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine GameObject (eater)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 3651467083937998574}
   - component: {fileID: 864932842504061953}
   - component: {fileID: 2779685052652715641}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DefenderX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83728052724457554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
