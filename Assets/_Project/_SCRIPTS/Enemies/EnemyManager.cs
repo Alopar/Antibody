@@ -13,6 +13,8 @@ namespace Gameplay
 
         [SerializeField] private FollowPlayerEnemy _followPlayerEnemyPrefab;
         [SerializeField] private PriorityCellEnemy _priorityCellEnemyPrefab;
+        [SerializeField] private IgnorerEnemy _ignorerEnemyPrefab;
+        [SerializeField] private WeakCellFocuserEnemy _weakCellFocuserEnemyPrefab;
         [SerializeField] private Player _player;
         [SerializeField] private Cell _cell;
 
@@ -42,6 +44,16 @@ namespace Gameplay
             {
                 enemyToSpawn = _priorityCellEnemyPrefab;
                 WavesManager.Instance.DecreaseCellFocusersToSpawn();
+            }
+            else if (typeof(T) == _ignorerEnemyPrefab.GetType())
+            {
+                enemyToSpawn = _ignorerEnemyPrefab;
+                WavesManager.Instance.DecreaseIgnorersToSpawn();
+            }
+            else if (typeof(T) == _weakCellFocuserEnemyPrefab.GetType())
+            {
+                enemyToSpawn = _weakCellFocuserEnemyPrefab;
+                WavesManager.Instance.DecreaseWeakCellsAttackersToSpawn();
             }
             else
                 Debug.LogError($"Enemy of type {typeof(T)} not found");

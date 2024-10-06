@@ -50,7 +50,7 @@ namespace Gameplay
             
             bool spawned = false;
             while (!spawned)
-                switch(UnityEngine.Random.Range(0, 2))
+                switch(UnityEngine.Random.Range(0, 4))
                 {
                     case 0:
                         if (WavesManager.Instance.FollowersToSpawn > 0)
@@ -63,6 +63,20 @@ namespace Gameplay
                         if (WavesManager.Instance.CellFocusersToSpawn > 0)
                         {
                             EnemyManager.Instance.SpawnEnemy<PriorityCellEnemy>(spawnPos);
+                            spawned = true;
+                        }
+                        break;
+                    case 2:
+                        if (WavesManager.Instance.IgnorersToSpawn > 0)
+                        {
+                            EnemyManager.Instance.SpawnEnemy<IgnorerEnemy>(spawnPos);
+                            spawned = true;
+                        }
+                        break;
+                    case 3:
+                        if (WavesManager.Instance.WeakCellsAttackersToSpawn > 0)
+                        {
+                            EnemyManager.Instance.SpawnEnemy<WeakCellFocuserEnemy>(spawnPos);
                             spawned = true;
                         }
                         break;

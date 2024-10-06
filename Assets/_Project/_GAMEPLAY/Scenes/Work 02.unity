@@ -1293,6 +1293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followPlayerEnemyPrefab: {fileID: 3566369678181986248, guid: c882601510cf767488b5c5915b48fd07, type: 3}
   _priorityCellEnemyPrefab: {fileID: 2784529484146808655, guid: 78295443095dbd6489f206736422b41e, type: 3}
+  _ignorerEnemyPrefab: {fileID: 1249294757893286548, guid: f04f9b7be6c9d0e4e8736bf4d463bb5d, type: 3}
+  _weakCellFocuserEnemyPrefab: {fileID: 5499437491046744305, guid: 0fa69362765c35f469b5cc68cdabc663, type: 3}
   _player: {fileID: 729860101}
   _cell: {fileID: 0}
 --- !u!4 &1446575145

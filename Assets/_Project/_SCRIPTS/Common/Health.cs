@@ -13,6 +13,10 @@ namespace Gameplay
         protected int _healthCurrent;
         #endregion
 
+        #region PROPERTIES
+        public int Current => _healthCurrent;
+        #endregion
+
         #region EVENTS
         public event Action<int, int> OnHealthChange;
         public event Action OnDied;
