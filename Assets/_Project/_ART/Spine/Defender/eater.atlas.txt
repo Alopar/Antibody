@@ -1,0 +1,49 @@
+eater.png
+size:1811,480
+filter:Linear,Linear
+pma:true
+body
+bounds:2,3,712,475
+eyes
+bounds:716,47,431,42
+rotate:90
+mouth
+bounds:1112,110,368,309
+rotate:90
+mouth eat
+bounds:1617,11,125,180
+rotate:90
+n part1
+bounds:1241,9,82,99
+n part2
+bounds:760,2,117,88
+n part3
+bounds:1420,13,82,95
+n part4
+bounds:1504,9,127,111
+rotate:90
+nachinka
+bounds:760,92,386,350
+rotate:90
+tongue
+bounds:1423,138,340,295
+rotate:90
+x part1
+bounds:1720,306,84,85
+rotate:90
+x part2
+bounds:1720,392,89,86
+x part3
+bounds:1720,225,81,79
+x part4
+bounds:879,2,88,89
+rotate:90
+y part1
+bounds:970,3,92,87
+y part2
+bounds:1146,8,93,100
+y part3
+bounds:1064,3,87,80
+rotate:90
+y part4
+bounds:1325,10,93,98

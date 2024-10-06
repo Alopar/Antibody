@@ -15,6 +15,9 @@ namespace Gameplay
         private List<Enemy> _markedEnemies = new();
         private float _timer;
 
+        public event Action Attacked;
+        public event Action<Vector3> Moved;
+
         private void Start()
         {
             EnemyManager.Instance.EnemyMarked += OnEnemyMarked;
@@ -49,12 +52,16 @@ namespace Gameplay
             _markedEnemies.RemoveAt(0);
             _timer = 0;
 
+            Attacked?.Invoke();
         }
 
         private void Move()
         {
             if (_timer >= _eatAnimationTime)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, _markedEnemies[0].transform.position, _moveSpeed * Time.deltaTime);
+                Moved?.Invoke(_markedEnemies[0].transform.position - transform.position);
+            }
         }
     }
 }
