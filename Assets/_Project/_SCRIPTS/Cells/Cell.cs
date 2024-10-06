@@ -17,11 +17,13 @@ namespace Gameplay
         #region FIELDS PRIVATE
         private static readonly Cell[,] _grid = new Cell[99, 99];
         private (int x, int y) _gridIndex = (50, 50);
+        private static int _cellsCount;
         #endregion
 
         #region PROPERTIES
         public (int x, int y) GridIndex => _gridIndex;
         public Cell[,] Grid => _grid;
+        public static int CellsCount => _cellsCount;
         #endregion
 
         #region METHODS PUBLIC
@@ -32,11 +34,16 @@ namespace Gameplay
         }
         #endregion
 
+        #region EVENTS
+        public static event System.Action<Cell> CellDied;
+        #endregion
+
         #region METHODS PRIVATE
         private void Init()
         {
             SetSelfIndex();
             UpdateView("full");
+            _cellsCount++;
         }
 
         private void SetSelfIndex()
@@ -58,6 +65,8 @@ namespace Gameplay
         {
             _grid[_gridIndex.x, _gridIndex.y] = null;
             Destroy(gameObject);
+            _cellsCount--;
+            CellDied?.Invoke(this);
         }
 
         private void HealthChange(int current, int max)
@@ -94,7 +103,7 @@ namespace Gameplay
             }
         }
 
-        private void WaveNumberIncreased()
+        private void RoundEnded()
         {
             if (_health.IsDamaged)
             {
@@ -119,14 +128,14 @@ namespace Gameplay
         {
             _health.OnDied += Died;
             _health.OnHealthChange += HealthChange;
-            WavesManager.Instance.WaveNumberIncreased += WaveNumberIncreased;
+            GameFlow.Instance.RoundEnded += RoundEnded;
         }
 
         private void OnDisable()
         {
             _health.OnDied -= Died;
             _health.OnHealthChange -= HealthChange;
-            WavesManager.Instance.WaveNumberIncreased -= WaveNumberIncreased;
+            GameFlow.Instance.RoundEnded -= RoundEnded;
         }
         #endregion
     }

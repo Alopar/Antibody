@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Gameplay
 {
@@ -9,6 +10,10 @@ namespace Gameplay
         public static GameFlow Instance => _instance;
         #endregion
 
+        public static bool ShowTutorial = true;
+
+        public event System.Action RoundEnded;
+
         private void Awake()
         {
             _instance = this;
@@ -17,36 +22,41 @@ namespace Gameplay
         private void Start()
         {
             EnemyManager.Instance.EnemyKilled += OnEnemyKilled;
+            Cell.CellDied += OnCellDie;
+        }
+
+        private void OnCellDie(Cell cell)
+        {
+            if (Cell.CellsCount <= 0)
+                Lose();
         }
 
         private void OnEnemyKilled(Enemy enemy)
         {
             if (EnemyManager.Instance.EnemiesCount == 0)
             {
-                WavesManager.Instance.NextWave();
+                StartCoroutine(EndRound());
             }
         }
 
-        public void StartGame()
+        public void Lose()
         {
-            UIManager.Instance.StartMenu.SetActive(false);
+            Pauser.Instance.Pause();
+            UIManager.Instance.DefeatMenu.SetActive(true);
         }
-    }
 
-    public class UIManager : MonoBehaviour
-    {
-        #region SINGLETONE
-        private static UIManager _instance;
-        public static UIManager Instance => _instance;
-        #endregion
-
-        [SerializeField] private GameObject _startMenu;
-
-        public GameObject StartMenu => _startMenu;
-
-        private void Awake()
+        private IEnumerator EndRound()
         {
-            _instance = this;
+            yield return new WaitForSeconds(1);
+            RoundEnded?.Invoke();
+
+            yield return new WaitForSeconds(3);
+            WavesManager.Instance.NextWave();
+        }
+
+        private void OnDestroy()
+        {
+            Cell.CellDied -= OnCellDie;
         }
     }
 }

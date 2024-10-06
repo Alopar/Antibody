@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 0
   m_EditorClassIdentifier: 
   _spawnCooldown: 2
-  _followPlayerEnemyCount: 3
-  _prioritiseCellEnemyCount: 3
-  _focusWeakCellEnemyCount: 3
-  _ignorePlayerEnemyCount: 3
+  _followPlayerEnemyCount: 1
+  _prioritiseCellEnemyCount: 1
+  _focusWeakCellEnemyCount: 1
+  _ignorePlayerEnemyCount: 1
   _allowedMarks: 3
