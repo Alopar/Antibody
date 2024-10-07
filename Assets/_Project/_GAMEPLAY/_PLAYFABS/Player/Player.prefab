@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20134fa2e801f154494d5ca1a67312c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resurrectionDelay: 5
+  _resurrectionDelay: 3
   _health: {fileID: -6219012313990156016}
   _shooting: {fileID: 9131022471496899365}
   _movement: {fileID: 1203075178426267193}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758b7a2c8b0117648bc07fc5ac281077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMax: 10
+  _healthMax: 1
   _invulnerabilityDuration: 5
 --- !u!114 &9131022471496899365
 MonoBehaviour:

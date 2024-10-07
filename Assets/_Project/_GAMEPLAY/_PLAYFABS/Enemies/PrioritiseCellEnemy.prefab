@@ -80,11 +80,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
-  _moveSpeed: 2.625
-  _attackDistance: 1
-  _contactOffset: 1
-  _attackCooldown: 1
-  _attackDamage: 1
+  _moveSpeed: 3
+  _attackDistance: 3.5
+  _contactOffset: 3.5
+  _attackCooldown: 3
+  _attackDamage: 15
   _changeMarkTime: 2
   _markType: 1
   _skeleton: {fileID: 3570304408239492598}
