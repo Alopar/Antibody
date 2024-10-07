@@ -50,7 +50,7 @@ namespace Gameplay
             yield return new WaitForSeconds(1);
             RoundEnded?.Invoke();
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.8f);
             WavesManager.Instance.NextWave();
         }
 

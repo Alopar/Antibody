@@ -26,7 +26,7 @@ namespace Gameplay
 
         private void OnRoundEnded()
         {
-            ShowCenter(3f);
+            ShowCenter(2.5f);
         }
 
         public void ShowCenter(float time)

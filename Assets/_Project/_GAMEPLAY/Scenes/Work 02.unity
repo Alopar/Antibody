@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7faa64930f7115f49913f0394031a459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRadius: 55
+  _spawnRadius: 40
   _spawnMaxAngleShift: 60
   _spawnMinAngleShift: 140
 --- !u!4 &360521634
