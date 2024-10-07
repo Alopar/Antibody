@@ -26,7 +26,7 @@ namespace Gameplay
             _isMove = moveValue != Vector2.zero;
 
             var direction = new Vector3(moveValue.x, moveValue.y, 0);
-            transform.position += direction * _speed * Time.deltaTime;
+            transform.position += direction * (_speed * Time.deltaTime);
         }
         #endregion
 

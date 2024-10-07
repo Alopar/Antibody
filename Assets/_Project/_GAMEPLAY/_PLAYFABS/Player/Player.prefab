@@ -117,7 +117,8 @@ MonoBehaviour:
   _shootPoint: {fileID: 7905827432375166326}
   _projectilePrefab: {fileID: 6199465141426299431, guid: 95720f484171e044f947ec906b0301e7, type: 3}
   _shootAction: {fileID: 1120369429361536294, guid: c2ea5a0c8ab47b0499e005c956b19e67, type: 3}
-  _switchWeaponAction: {fileID: 3627961447799632954, guid: c2ea5a0c8ab47b0499e005c956b19e67, type: 3}
+  _nextWeaponAction: {fileID: 7476244043514120974, guid: c2ea5a0c8ab47b0499e005c956b19e67, type: 3}
+  _previousWeaponAction: {fileID: 2411907206095950430, guid: c2ea5a0c8ab47b0499e005c956b19e67, type: 3}
   _look: {fileID: -306480141877695674}
 --- !u!114 &1203075178426267193
 MonoBehaviour:

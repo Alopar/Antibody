@@ -15,7 +15,8 @@ namespace Gameplay
 
         [Space(10)]
         [SerializeField] private InputActionReference _shootAction;
-        [SerializeField] private InputActionReference _switchWeaponAction;
+        [SerializeField] private InputActionReference _nextWeaponAction;
+        [SerializeField] private InputActionReference _previousWeaponAction;
 
         [Space(10)]
         [SerializeField] private LookAtPointer _look;
@@ -63,12 +64,20 @@ namespace Gameplay
             _cooldownTimer = _shootCooldown + Time.time;
         }
 
-        private void SwitchMarker()
+        private void NextMarker()
         {
-            if (!_switchWeaponAction.action.triggered) return;
+            if (!_nextWeaponAction.action.triggered) return;
 
-            _markType += 1;
-            _markType = _markType == MarkType.None ? MarkType.X : _markType;
+            _markType = _markType == MarkType.N ? MarkType.X : _markType + 1;
+            _marker?.SetMark(_markType);
+            SwitchedMark?.Invoke(_markType);
+        }
+        
+        private void PreviousMarker()
+        {
+            if (!_previousWeaponAction.action.triggered) return;
+
+            _markType = _markType == MarkType.X ? MarkType.N : _markType - 1;
             _marker?.SetMark(_markType);
             SwitchedMark?.Invoke(_markType);
         }
@@ -79,7 +88,8 @@ namespace Gameplay
         {
             Shoot();
             Reload();
-            SwitchMarker();
+            NextMarker();
+            PreviousMarker();
         }
 
         private void OnDisable()
