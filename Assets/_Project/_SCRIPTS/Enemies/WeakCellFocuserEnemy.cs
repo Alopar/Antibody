@@ -5,6 +5,12 @@ namespace Gameplay
 {
     public class WeakCellFocuserEnemy : Enemy
     {
+        public override void Init(Player player)
+        {
+            _player = player;
+            Cell.CellDied += OnCellDie;
+        }
+
         private void Start()
         {
             EnemyManager.Instance.EnemyMarked += OnMarked;
@@ -46,7 +52,7 @@ namespace Gameplay
                 _player.GetComponent<PlayerHealth>().DealDamage(_attackDamage);
             else
                 return;
-
+            
             TriggerAttack();
         }
 
@@ -86,12 +92,21 @@ namespace Gameplay
 
         private void ChooseWeakestCell()
         {
+            if (Cell.CellsCount == 0)
+                return;
+
             var aliveCells = FindObjectsByType<Cell>(FindObjectsSortMode.None);
 
             Cell weakestCell = aliveCells[0];
+            if (weakestCell == _cell)
+                weakestCell = aliveCells[1];
             Health weakest = weakestCell.GetComponent<Health>();
+
             foreach (var cell in aliveCells)
             {
+                if (cell == _cell)
+                    continue;
+
                 var health = cell.GetComponent<Health>();
                 if (health.Current < weakest.Current)
                 {
@@ -103,8 +118,14 @@ namespace Gameplay
             _cell = weakestCell;
         }
 
-        private void OnDestroy()
+        protected override void ChooseCell()
         {
+            ChooseWeakestCell();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
             EnemyManager.Instance.EnemyMarked -= OnMarked;
         }
     }

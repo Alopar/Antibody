@@ -43,6 +43,7 @@ namespace Gameplay
         {
             Pauser.Instance.Pause();
             UIManager.Instance.DefeatMenu.SetActive(true);
+            EnemyManager.Instance.DisableEnemies();
         }
 
         private IEnumerator EndRound()

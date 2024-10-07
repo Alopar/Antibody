@@ -59,9 +59,8 @@ namespace Gameplay
                 Debug.LogError($"Enemy of type {typeof(T)} not found");
 
             var enemy = Instantiate(enemyToSpawn, position, Quaternion.identity);
-            var cells = FindObjectsByType<Cell>(FindObjectsSortMode.None);
 
-            enemy.Init(_player, cells[UnityEngine.Random.Range(0, cells.Length)]);
+            enemy.Init(_player);
             _enemies.Add(enemy);
         }
 
@@ -75,6 +74,12 @@ namespace Gameplay
         public void TriggerEnemyMarked(Enemy enemy)
         {
             EnemyMarked?.Invoke(enemy);
+        }
+
+        public void DisableEnemies()
+        {
+            foreach (var enemy in _enemies)
+                enemy.enabled = false;
         }
     }
 }
