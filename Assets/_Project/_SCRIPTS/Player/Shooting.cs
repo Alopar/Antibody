@@ -30,6 +30,11 @@ namespace Gameplay
 
         #region PROPERTIES
         public bool IsShoot => _isShoot;
+        public MarkType Mark => _markType;
+        #endregion
+
+        #region EVENTS
+        public event Action<MarkType> SwitchedMark;
         #endregion
 
         #region METHODS PRIVATE
@@ -65,6 +70,7 @@ namespace Gameplay
             _markType += 1;
             _markType = _markType == MarkType.None ? MarkType.X : _markType;
             _marker?.SetMark(_markType);
+            SwitchedMark?.Invoke(_markType);
         }
         #endregion
 
