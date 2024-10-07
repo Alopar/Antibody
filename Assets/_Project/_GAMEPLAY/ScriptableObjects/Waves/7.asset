@@ -16,5 +16,5 @@ MonoBehaviour:
   _followPlayerEnemyCount: 6
   _prioritiseCellEnemyCount: 5
   _focusWeakCellEnemyCount: 5
-  _ignorePlayerEnemyCount: 6
+  _ignorePlayerEnemyCount: 5
   _allowedMarks: 3
