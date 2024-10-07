@@ -11,6 +11,7 @@ namespace Gameplay
     {
         [SerializeField] protected float _health;
         [SerializeField] protected float _moveSpeed;
+        [SerializeField] protected float _speedSpread;
         [SerializeField] protected float _attackDistance;
         [SerializeField] protected float _contactOffset;
         [SerializeField] protected float _attackCooldown;
@@ -43,6 +44,7 @@ namespace Gameplay
             _player = player;
             ChooseCell();
             Cell.CellDied += OnCellDie;
+            _moveSpeed += UnityEngine.Random.Range(-1, 1f) * _speedSpread;
         }
 
         protected void OnCellDie(Cell cell)
