@@ -21,12 +21,12 @@ namespace Gameplay
         #region METHODS PUBLIC
         public void SetNormalState()
         {
-            Cursor.SetCursor(_normal, Vector2.zero, CursorMode.ForceSoftware);
+            Cursor.SetCursor(_normal, Vector2.zero, CursorMode.Auto);
         }
 
         public void SetAttackState()
         {
-            Cursor.SetCursor(_attack, Vector2.zero, CursorMode.ForceSoftware);
+            Cursor.SetCursor(_attack, Vector2.zero, CursorMode.Auto);
         }
         #endregion
 
@@ -42,7 +42,7 @@ namespace Gameplay
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            Cursor.SetCursor(_normal, Vector2.zero, CursorMode.ForceSoftware);
+            Cursor.SetCursor(_normal, Vector2.zero, CursorMode.Auto);
         }
         #endregion
 
