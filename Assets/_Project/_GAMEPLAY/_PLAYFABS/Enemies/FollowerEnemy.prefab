@@ -190,7 +190,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4579391920572033473}
   - component: {fileID: 3566369678181986248}
-  - component: {fileID: 6729252531200985279}
+  - component: {fileID: 3744529941756161570}
+  - component: {fileID: 2801384225705057045}
   m_Layer: 0
   m_Name: FollowerEnemy
   m_TagString: Untagged
@@ -207,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 6415685003126351931}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.84, y: 3.47, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -236,8 +237,8 @@ MonoBehaviour:
   _markType: 0
   _skeleton: {fileID: 4738001954661056884}
   _skinPrefix: spike
---- !u!61 &6729252531200985279
-BoxCollider2D:
+--- !u!58 &3744529941756161570
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -270,15 +271,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.15, y: 0}
+  m_Radius: 1.25
+--- !u!114 &2801384225705057045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415685003126351931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13151f13b6b8b14a9542a6af6fb8e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

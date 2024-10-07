@@ -189,8 +189,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3339820399446300334}
-  - component: {fileID: 1993594190047319622}
   - component: {fileID: 1249294757893286548}
+  - component: {fileID: 1066822677564559908}
+  - component: {fileID: 5819890154661989900}
   m_Layer: 0
   m_Name: IgnorerEnemy
   m_TagString: Untagged
@@ -207,15 +208,37 @@ Transform:
   m_GameObject: {fileID: 9193499343426686623}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.549124, y: -12.052642, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7135595830502495332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1993594190047319622
-BoxCollider2D:
+--- !u!114 &1249294757893286548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193499343426686623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366a53f4a9da8d141a44bdbd26517717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 3
+  _moveSpeed: 3.5
+  _attackDistance: 1
+  _contactOffset: 1
+  _attackCooldown: 1.5
+  _attackDamage: 2
+  _changeMarkTime: 1
+  _markType: 0
+  _skeleton: {fileID: 8542537098217059461}
+  _skinPrefix: stick
+--- !u!58 &1066822677564559908
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -249,18 +272,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1249294757893286548
+  m_Radius: 1.25
+--- !u!114 &5819890154661989900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,16 +282,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9193499343426686623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366a53f4a9da8d141a44bdbd26517717, type: 3}
+  m_Script: {fileID: 11500000, guid: d13151f13b6b8b14a9542a6af6fb8e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
-  _moveSpeed: 3.5
-  _attackDistance: 1
-  _contactOffset: 1
-  _attackCooldown: 1.5
-  _attackDamage: 2
-  _changeMarkTime: 1
-  _markType: 0
-  _skeleton: {fileID: 8542537098217059461}
-  _skinPrefix: stick
