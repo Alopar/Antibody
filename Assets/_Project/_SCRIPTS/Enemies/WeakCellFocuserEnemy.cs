@@ -42,8 +42,10 @@ namespace Gameplay
 
             if (_isMarked)
                 _cell.GetComponent<Health>().DealDamage(_attackDamage);
-            else
+            else if (!_player.IsDie)
                 _player.GetComponent<PlayerHealth>().DealDamage(_attackDamage);
+            else
+                return;
 
             TriggerAttack();
         }

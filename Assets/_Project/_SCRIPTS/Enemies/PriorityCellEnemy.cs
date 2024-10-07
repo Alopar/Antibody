@@ -28,7 +28,12 @@ namespace Gameplay
             _timer = 0;
 
             if (_isMarked)
-                _player.GetComponent<PlayerHealth>().DealDamage(_attackDamage);
+            {
+                if (_player.IsDie)
+                    return;
+                else
+                    _player.GetComponent<PlayerHealth>().DealDamage(_attackDamage);
+            }
             else
                 _cell.GetComponent<Health>().DealDamage(_attackDamage);
 
