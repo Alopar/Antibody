@@ -22,7 +22,11 @@ namespace Gameplay
         {
             if (_canSkip)
             {
-                _blackout.Blackout(true, false, () => SceneManager.LoadScene(2));
+                _blackout.Blackout(true, false, () =>
+                {
+                    SceneManager.LoadScene(2);
+                    SoundManager.Instance.PlayMusic(MusicTracks.battle, 22050);
+                });
             }
         }
 

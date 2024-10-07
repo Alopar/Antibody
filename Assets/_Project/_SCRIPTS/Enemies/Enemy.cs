@@ -74,6 +74,7 @@ namespace Gameplay
             _skeleton.Skeleton.SetSlotsToSetupPose();
 
             _isMarked = true;
+            SoundManager.Instance.PlayShort(ShortClip.hit, 0);
             EnemyManager.Instance.TriggerEnemyMarked(this);
         }
 
@@ -82,6 +83,7 @@ namespace Gameplay
             StartCoroutine(ChangingMark());
             _skeleton.Skeleton.SetSkin(_skinPrefix + " question");
             _skeleton.Skeleton.SetSlotsToSetupPose();
+            SoundManager.Instance.PlayShort(ShortClip.wrongShot, 0);
         }
 
         protected void RandomiseMark()

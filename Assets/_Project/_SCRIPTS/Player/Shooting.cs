@@ -61,6 +61,8 @@ namespace Gameplay
             _marker.Throw();
             _marker = null;
 
+            SoundManager.Instance.PlayShort(ShortClip.shot, 0);
+
             _cooldownTimer = _shootCooldown + Time.time;
         }
 
@@ -70,6 +72,8 @@ namespace Gameplay
 
             _markType = _markType == MarkType.N ? MarkType.X : _markType + 1;
             _marker?.SetMark(_markType);
+            SoundManager.Instance.PlayShort(ShortClip.swap, 0, UnityEngine.Random.Range(0.7f, 2));
+
             SwitchedMark?.Invoke(_markType);
         }
         
@@ -79,6 +83,8 @@ namespace Gameplay
 
             _markType = _markType == MarkType.X ? MarkType.N : _markType - 1;
             _marker?.SetMark(_markType);
+            SoundManager.Instance.PlayShort(ShortClip.swap, 0, UnityEngine.Random.Range(0.7f, 2));
+
             SwitchedMark?.Invoke(_markType);
         }
         #endregion

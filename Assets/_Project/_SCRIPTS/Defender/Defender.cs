@@ -51,6 +51,7 @@ namespace Gameplay
             EnemyManager.Instance.Kill(_markedEnemies[0]);
             _markedEnemies.RemoveAt(0);
             _timer = 0;
+            SoundManager.Instance.PlayShort(ShortClip.defenderEat, 44100 / 4);
 
             Attacked?.Invoke();
         }
