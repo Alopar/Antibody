@@ -89,7 +89,7 @@ namespace Gameplay
         {
             int increase = _currentWave - _wavesData.Length + 1;
 
-            return _wavesData[_wavesData.Length - 1].CreateCopy(increase); ;
+            return _wavesData[_wavesData.Length - 1].CreateCopy(increase, increase / 2 * 0.1f);
         }
     }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c910f86d7944ca4e9a21bcf79986dc5, type: 3}
-  m_Name: 4
+  m_Name: 10
   m_EditorClassIdentifier: 
   _spawnCooldown: 1
-  _followPlayerEnemyCount: 2
-  _prioritiseCellEnemyCount: 2
-  _focusWeakCellEnemyCount: 2
-  _ignorePlayerEnemyCount: 4
+  _followPlayerEnemyCount: 8
+  _prioritiseCellEnemyCount: 8
+  _focusWeakCellEnemyCount: 8
+  _ignorePlayerEnemyCount: 8
   _allowedMarks: 3

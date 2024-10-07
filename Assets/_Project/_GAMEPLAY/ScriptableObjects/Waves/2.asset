@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c910f86d7944ca4e9a21bcf79986dc5, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  _spawnCooldown: 1.5
-  _followPlayerEnemyCount: 1
+  _spawnCooldown: 0.5
+  _followPlayerEnemyCount: 2
   _prioritiseCellEnemyCount: 1
   _focusWeakCellEnemyCount: 1
   _ignorePlayerEnemyCount: 0

@@ -20,10 +20,10 @@ namespace Gameplay
         public int IgnorePlayerEnemyCount => _ignorePlayerEnemyCount;
         public int EnemiesCount => _ignorePlayerEnemyCount + _focusWeakCellEnemyCount + _prioritiseCellEnemyCount + _followPlayerEnemyCount;
     
-        public WaveSO CreateCopy(int increase)
+        public WaveSO CreateCopy(int increase, float timeDecrease)
         {
             var copy = ScriptableObject.CreateInstance<WaveSO>();
-            copy._spawnCooldown = _spawnCooldown;
+            copy._spawnCooldown = _spawnCooldown - timeDecrease;
             copy._followPlayerEnemyCount = _followPlayerEnemyCount + increase;
             copy._prioritiseCellEnemyCount = _prioritiseCellEnemyCount + increase;
             copy._focusWeakCellEnemyCount = _focusWeakCellEnemyCount + increase;

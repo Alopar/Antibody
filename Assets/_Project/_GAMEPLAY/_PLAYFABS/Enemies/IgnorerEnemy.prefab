@@ -228,12 +228,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
-  _moveSpeed: 3.125
-  _speedSpread: 1.5
+  _moveSpeed: 4
+  _speedSpread: 0
   _attackDistance: 3.5
   _contactOffset: 3.5
   _attackCooldown: 2.5
-  _attackDamage: 30
+  _attackDamage: 50
   _changeMarkTime: 2
   _markType: 0
   _skeleton: {fileID: 8542537098217059461}
