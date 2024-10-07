@@ -4018,7 +4018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06350ee4cc3ad244d8e48ab9e606f6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetSpeed: 0.5
+  _offsetSpeed: 0.3
   _background: {fileID: 2127159518}
 --- !u!1 &1723186040
 GameObject:
