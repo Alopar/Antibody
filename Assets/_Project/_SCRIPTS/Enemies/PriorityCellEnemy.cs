@@ -28,7 +28,7 @@ namespace Gameplay
             _timer = 0;
 
             if (_isMarked)
-                _player.GetComponent<Health>().DealDamage(_attackDamage);
+                _player.GetComponent<PlayerHealth>().DealDamage(_attackDamage);
             else
                 _cell.GetComponent<Health>().DealDamage(_attackDamage);
 

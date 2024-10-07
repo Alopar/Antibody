@@ -22,7 +22,7 @@ namespace Gameplay
                 return;
 
             _timer = 0;
-            _player.GetComponent<Health>().DealDamage(_attackDamage);
+            _player.GetComponent<PlayerHealth>().DealDamage(_attackDamage);
             TriggerAttack();
         }
 
