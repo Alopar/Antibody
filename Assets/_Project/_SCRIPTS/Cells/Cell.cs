@@ -92,13 +92,13 @@ namespace Gameplay
             
             if (delta <= 0.75 && delta > 0.50)
             {
-                UpdateView("half");
+                UpdateView("third");
                 return;
             }
             
             if (delta <= 0.50)
             {
-                UpdateView("third");
+                UpdateView("half");
                 return;
             }
         }
