@@ -43,6 +43,7 @@ namespace Gameplay
         {
             Pauser.Instance.Pause();
             UIManager.Instance.DefeatMenu.SetActive(true);
+            EnemyManager.Instance.DisableEnemies();
         }
 
         private IEnumerator EndRound()
@@ -50,7 +51,7 @@ namespace Gameplay
             yield return new WaitForSeconds(1);
             RoundEnded?.Invoke();
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.3f);
             WavesManager.Instance.NextWave();
         }
 

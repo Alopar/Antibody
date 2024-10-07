@@ -10,8 +10,10 @@ namespace Gameplay
         #endregion
 
         [SerializeField] private GameObject _defeatMenu;
+        [SerializeField] private BlackoutControl _blackout;
 
         public GameObject DefeatMenu => _defeatMenu;
+        public BlackoutControl Blackout => _blackout;
 
         private void Awake()
         {

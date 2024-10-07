@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b945bcbcf88bc40428bc3e87d617b9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 4
-  _attackRadius: 2
+  _moveSpeed: 11.25
+  _attackRadius: 5
   _eatAnimationTime: 2
   _attackCooldown: 2
   _markerType: 0

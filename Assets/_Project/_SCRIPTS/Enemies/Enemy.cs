@@ -11,6 +11,7 @@ namespace Gameplay
     {
         [SerializeField] protected float _health;
         [SerializeField] protected float _moveSpeed;
+        [SerializeField] protected float _speedSpread;
         [SerializeField] protected float _attackDistance;
         [SerializeField] protected float _contactOffset;
         [SerializeField] protected float _attackCooldown;
@@ -38,10 +39,18 @@ namespace Gameplay
             RandomiseMark();
         }
 
-        public void Init(Player player, Cell cell)
+        public virtual void Init(Player player)
         {
             _player = player;
-            _cell = cell;
+            ChooseCell();
+            Cell.CellDied += OnCellDie;
+            _moveSpeed += UnityEngine.Random.Range(-1, 1f) * _speedSpread;
+        }
+
+        protected void OnCellDie(Cell cell)
+        {
+            if (_cell == cell)
+                ChooseCell();
         }
 
         protected abstract void Update();
@@ -98,6 +107,28 @@ namespace Gameplay
         protected void TriggerMoved(Vector3 direction)
         {
             Moved?.Invoke(direction);
+        }
+
+        protected virtual void ChooseCell()
+        {
+            if (Cell.CellsCount == 0)
+                return;
+
+            var cells = FindObjectsByType<Cell>(FindObjectsSortMode.None);
+            for (int i = 0; i < 100; i++)
+            {
+                var cell = cells[UnityEngine.Random.Range(0, cells.Length)];
+                if (cell != _cell)
+                {
+                    _cell = cell;
+                    return;
+                }
+            }
+        }
+
+        protected virtual void OnDestroy()
+        {
+            Cell.CellDied -= OnCellDie;
         }
     }
 }

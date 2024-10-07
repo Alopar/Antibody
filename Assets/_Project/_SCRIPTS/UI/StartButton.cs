@@ -8,6 +8,7 @@ namespace Gameplay
     public class StartButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
+        [SerializeField] private BlackoutControl _blackout;
 
         private void OnEnable()
         {
@@ -21,7 +22,7 @@ namespace Gameplay
 
         private void OnButtonClick()
         {
-            SceneManager.LoadScene(1);
+            _blackout.Blackout(true, false, () => SceneManager.LoadScene(1));
         }
     }
 }

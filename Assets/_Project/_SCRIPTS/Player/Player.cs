@@ -34,13 +34,15 @@ namespace Gameplay
         private void TurnOn()
         {
             _shooting.enabled = true;
+            _health.enabled = true;
             _movement.enabled = true;
             _lookAtPointer.enabled = true;
         }
-        
+
         private void TurnOff()
         {
             _shooting.enabled = false;
+            _health.enabled = false;
             _movement.enabled = false;
             _lookAtPointer.enabled = false;
         }

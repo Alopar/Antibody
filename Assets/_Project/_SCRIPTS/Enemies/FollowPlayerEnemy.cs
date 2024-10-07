@@ -18,11 +18,11 @@ namespace Gameplay
 
         protected override void Attack()
         {
-            if (_timer < _attackCooldown)
+            if (_timer < _attackCooldown || _player.IsDie)
                 return;
 
             _timer = 0;
-            _player.GetComponent<Health>().DealDamage(_attackDamage);
+            _player.GetComponent<PlayerHealth>().DealDamage(_attackDamage);
             TriggerAttack();
         }
 

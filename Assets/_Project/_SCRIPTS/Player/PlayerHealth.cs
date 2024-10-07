@@ -18,7 +18,7 @@ namespace Gameplay
         {
             if (!enabled) return;
             if (_invulnerabilityTimer > Time.time) return;
-
+            
             base.DealDamage(value);
         }
 

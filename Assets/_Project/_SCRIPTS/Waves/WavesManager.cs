@@ -20,7 +20,19 @@ namespace Gameplay
         private int _ignorersToSpawn;
         private int _weakCellsAttackersToSpawn;
 
-        public WaveSO CurrentWave => _wavesData[_currentWave];
+        private WaveSO _outOfRangeWave;
+
+        public WaveSO CurrentWave 
+        {
+            get
+            {
+                if (_currentWave < _wavesData.Length)
+                    return _wavesData[_currentWave];
+
+                return _outOfRangeWave;
+            }
+        }
+
         public int CurrentWaveIndex => _currentWave;
 
         public int FollowersToSpawn => _followersToSpawn;
@@ -41,6 +53,9 @@ namespace Gameplay
         public void NextWave()
         {
             _currentWave++;
+            if (_currentWave >= _wavesData.Length)
+                _outOfRangeWave = GetWaveOutOfRange();
+
             ResetEnemiesToSpawnCount();
             WaveNumberIncreased?.Invoke();
         }
@@ -68,6 +83,13 @@ namespace Gameplay
         public void DecreaseWeakCellsAttackersToSpawn()
         {
             _weakCellsAttackersToSpawn--;
+        }
+
+        private WaveSO GetWaveOutOfRange()
+        {
+            int increase = _currentWave - _wavesData.Length + 1;
+
+            return _wavesData[_wavesData.Length - 1].CreateCopy(increase, increase / 2 * 0.1f);
         }
     }
 }
